@@ -828,7 +828,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.75);padding:52px 24px 24px}
         <div class="fpanel active" id="flogin">
           <div class="fg"><label>Username</label><input type="text" id="luser" placeholder="e.g. student01"/></div>
           <div class="fg"><label>Password</label><input type="password" id="lpass" placeholder="Your password"/></div>
-          <button class="fsub" onclick="loginFromHome()">Login to My Dashboard →</button>
+          <button onclick="loginFromHome()">Login to My Dashboard →</button>
           <p style="text-align:center;font-size:.75rem;color:#64748b;margin-top:12px">Forgot password? <a href="https://wa.me/919052389200" target="_blank" style="color:var(--accent)">Contact on WhatsApp</a></p>
         </div>
         <div class="fpanel" id="fregister">
@@ -1021,18 +1021,13 @@ function loginFromHome() {
   };
 
   if (STUDENTS[username] && STUDENTS[username].password === password) {
-
-    // save login
     localStorage.setItem("loggedInUser", username);
-
-    // redirect
     window.location.href = "dashboard.html";
-
   } else {
     alert("Invalid username or password");
   }
 }
+</script>
   
-<script>
 </body>
 </html>
