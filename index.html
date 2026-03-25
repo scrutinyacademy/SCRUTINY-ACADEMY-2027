@@ -994,7 +994,7 @@ function doLogin(){
   const u = document.getElementById('luser').value.trim().toLowerCase();
   const p = document.getElementById('lpass').value.trim();
   if(CREDS[u] && CREDS[u] === p){
-    window.location.href = 'scrutiny_student_dashboard.html';
+    window.location.href = 'dashboard.html';
   } else {
     alert('Invalid username or password.\n\nContact WhatsApp 9052389200 for help.');
     document.getElementById('lpass').value = '';
