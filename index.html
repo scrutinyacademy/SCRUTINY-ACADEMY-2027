@@ -828,7 +828,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.75);padding:52px 24px 24px}
         <div class="fpanel active" id="flogin">
           <div class="fg"><label>Username</label><input type="text" id="luser" placeholder="e.g. student01"/></div>
           <div class="fg"><label>Password</label><input type="password" id="lpass" placeholder="Your password"/></div>
-          <button class="fsub" onclick="doLogin()">Login to My Dashboard →</button>
+          <button class="fsub" onclick="loginFromHome()">Login to My Dashboard →</button>
           <p style="text-align:center;font-size:.75rem;color:#64748b;margin-top:12px">Forgot password? <a href="https://wa.me/919052389200" target="_blank" style="color:var(--accent)">Contact on WhatsApp</a></p>
         </div>
         <div class="fpanel" id="fregister">
@@ -1009,26 +1009,30 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 <script>
-const STUDENTS = {
-  "sanvi10": { password: "sanvi123" },
-  "navneeth10": { password: "nav123" },
-  "nishu10": { password: "nishu123" },
-  "prachi10": { password: "prachi123" }
-};
-
 function loginFromHome() {
-  const username = document.querySelector('input[placeholder="e.g. student01"]').value.toLowerCase();
-  const password = document.querySelector('input[placeholder="Your password"]').value;
+  const username = document.getElementById("luser").value.trim().toLowerCase();
+  const password = document.getElementById("lpass").value.trim();
 
-  const student = STUDENTS[username];
+  const STUDENTS = {
+    "sanvi10": { password: "sanvi123" },
+    "navneeth10": { password: "nav123" },
+    "nishu10": { password: "nishu123" },
+    "prachi10": { password: "prachi123" }
+  };
 
-  if (student && student.password === password) {
+  if (STUDENTS[username] && STUDENTS[username].password === password) {
+
+    // save login
     localStorage.setItem("loggedInUser", username);
+
+    // redirect
     window.location.href = "dashboard.html";
+
   } else {
     alert("Invalid username or password");
   }
 }
-</script>
+  
+<script>
 </body>
 </html>
