@@ -1008,6 +1008,29 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+<script>
+
+const STUDENTS = {
+  "sanvi10": { password: "sanvi123" },
+  "navneeth10": { password: "nav123" },
+  "nishu10": { password: "nishu123" },
+  "prachi10": { password: "prachi123" }
+};
+
+function loginFromHome() {
+  const username = document.querySelector('input[placeholder="e.g. student01"]').value.toLowerCase();
+  const password = document.querySelector('input[placeholder="Your password"]').value;
+
+  const student = STUDENTS[username];
+
+  if (student && student.password === password) {
+    localStorage.setItem("loggedInUser", username);
+    window.location.href = "dashboard.html";
+  } else {
+    alert("Invalid username or password");
+  }
+}
+
 </script>
 </body>
 </html>
