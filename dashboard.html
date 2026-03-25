@@ -964,5 +964,26 @@ function closeResourceModal(){
 document.getElementById('resourceModal').addEventListener('click',function(e){if(e.target===this)closeResourceModal()});
 function openVideo(url){ window.open(url,'_blank'); }
 </script>
+<script>
+const STUDENTS = {
+  "student01": { password: "1234", name: "Student One" },
+  "student02": { password: "1234", name: "Student Two" }
+};
+
+function doLogin(){
+  let u = document.getElementById('usernameInput').value.trim().toLowerCase();
+  let p = document.getElementById('passwordInput').value.trim();
+
+  if(STUDENTS[u] && STUDENTS[u].password === p){
+      alert("Login Successful!");
+      
+      document.getElementById('login-page').style.display = "none";
+      document.getElementById('dashboard-page').style.display = "flex";
+
+  } else {
+      alert("Invalid login");
+  }
+}
+</script>
 </body>
 </html>
